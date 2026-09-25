@@ -1,0 +1,9 @@
+{
+  "event_id": "092601-001-sample-001",
+  "event_type": "SCHEDULE_FROZEN",
+  "aggregate_type": "venue_schedule",
+  "aggregate_id": "venue_mobility-001",
+  "occurred_at": "2026-09-25T10:00:00+08:00",
+  "version": 1,
+  "payload": {}
+}

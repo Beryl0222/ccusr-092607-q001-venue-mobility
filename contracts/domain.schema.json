@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "分散赛区通勤保障决策台领域事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "SCHEDULE_FROZEN",
+        "REQUEST_ACCEPTED",
+        "RESOURCE_RESERVED",
+        "JOURNEY_REPLANNED",
+        "COMMITMENT_CLOSED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "venue_schedule",
+        "travel_request",
+        "transport_resource",
+        "journey_commitment"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "REQUEST_ACCEPTED": [
+      "traveler_role",
+      "required_arrival"
+    ],
+    "RESOURCE_RESERVED": [
+      "resource_ref",
+      "capacity"
+    ],
+    "JOURNEY_REPLANNED": [
+      "affected_segments",
+      "reason"
+    ]
+  },
+  "additionalProperties": false
+}

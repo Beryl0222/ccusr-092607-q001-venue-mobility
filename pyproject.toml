@@ -1,0 +1,5 @@
+[project]
+name = "venue-mobility"
+version = "0.1.0"
+description = "分散赛区通勤保障决策台领域契约"
+requires-python = ">=3.11"
