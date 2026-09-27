@@ -36,6 +36,18 @@ class ContractTests(unittest.TestCase):
         issues = validate_event(dict(self.sample, event_type="UNKNOWN"), self.schema)
         self.assertIn(("event_type", "unsupported_value"), [(x.field, x.code) for x in issues])
 
+    def test_new_event_payloads_require_their_fields(self) -> None:
+        for event_type, missing_field in [
+            ("REQUEST_QUARANTINED", "payload.business_ref"),
+            ("RESOURCE_RELEASED", "payload.resource_ref"),
+            ("JOURNEY_LIFECYCLED", "payload.node"),
+            ("SUPPLY_CHANGED", "payload.change_kind"),
+            ("COMMITMENT_CLOSED", "payload.outcome"),
+        ]:
+            event = dict(self.sample, event_type=event_type, payload={})
+            codes = [(x.field, x.code) for x in validate_event(event, self.schema)]
+            self.assertIn((missing_field, "required"), codes, event_type)
+
 
 if __name__ == "__main__":
     unittest.main()

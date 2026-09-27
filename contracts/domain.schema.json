@@ -20,9 +20,15 @@
       "type": "string",
       "enum": [
         "SCHEDULE_FROZEN",
+        "SCHEDULE_CHANGED",
         "REQUEST_ACCEPTED",
+        "REQUEST_QUARANTINED",
         "RESOURCE_RESERVED",
+        "RESOURCE_RELEASED",
+        "JOURNEY_PLANNED",
         "JOURNEY_REPLANNED",
+        "JOURNEY_LIFECYCLED",
+        "SUPPLY_CHANGED",
         "COMMITMENT_CLOSED"
       ]
     },
@@ -56,13 +62,61 @@
       "traveler_role",
       "required_arrival"
     ],
+    "REQUEST_QUARANTINED": [
+      "business_ref",
+      "conflict_fields"
+    ],
     "RESOURCE_RESERVED": [
       "resource_ref",
       "capacity"
     ],
+    "RESOURCE_RELEASED": [
+      "resource_ref",
+      "reason"
+    ],
+    "JOURNEY_PLANNED": [
+      "option_id",
+      "mode",
+      "reasons"
+    ],
     "JOURNEY_REPLANNED": [
       "affected_segments",
       "reason"
+    ],
+    "JOURNEY_LIFECYCLED": [
+      "node",
+      "at_time"
+    ],
+    "SUPPLY_CHANGED": [
+      "change_kind",
+      "affected_refs",
+      "effective_from"
+    ],
+    "COMMITMENT_CLOSED": [
+      "outcome",
+      "basis_event_ids"
+    ]
+  },
+  "enums": {
+    "lifecycle_node": [
+      "CONFIRMED",
+      "WAITING",
+      "BOARDED",
+      "NO_SHOW",
+      "ESCALATED",
+      "COMPLETED"
+    ],
+    "supply_change_kind": [
+      "schedule_change",
+      "transit_suspension",
+      "road_restriction",
+      "vehicle_offline",
+      "security_window_closed"
+    ],
+    "close_outcome": [
+      "completed",
+      "cancelled",
+      "superseded"
     ]
   },
   "additionalProperties": false
