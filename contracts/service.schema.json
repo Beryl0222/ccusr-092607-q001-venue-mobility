@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "分散赛区通勤保障决策台服务事件",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "aggregate_type",
+    "aggregate_id",
+    "occurred_at",
+    "version",
+    "payload"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "REQUEST_SUBMITTED",
+        "REQUEST_ACCEPTED",
+        "REQUEST_ESCALATED_REVIEW",
+        "REQUEST_REJECTED",
+        "OPTION_PROPOSED",
+        "WAITING_STARTED",
+        "WAITING_EXPIRED",
+        "RESOURCE_RESERVED",
+        "RESOURCE_RELEASED",
+        "DISPATCH_CONFIRMED",
+        "JOURNEY_REPLANNED",
+        "JOURNEY_UPGRADED",
+        "JOURNEY_STRANDED",
+        "TRANSFER_COMPLETED",
+        "COMMITMENT_CLOSED",
+        "DISRUPTION_DECLARED",
+        "DISRUPTION_CLEARED"
+      ]
+    },
+    "aggregate_type": {
+      "type": "string",
+      "enum": [
+        "venue_schedule",
+        "travel_request",
+        "transport_resource",
+        "journey_commitment"
+      ]
+    },
+    "aggregate_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "payload_required_by_event": {
+    "REQUEST_SUBMITTED": [
+      "request"
+    ],
+    "REQUEST_ACCEPTED": [
+      "business_ref",
+      "traveler_role",
+      "required_arrival"
+    ],
+    "REQUEST_ESCALATED_REVIEW": [
+      "reason",
+      "request"
+    ],
+    "REQUEST_REJECTED": [
+      "business_ref"
+    ],
+    "OPTION_PROPOSED": [
+      "business_ref",
+      "option"
+    ],
+    "WAITING_STARTED": [
+      "business_ref",
+      "expires_at"
+    ],
+    "WAITING_EXPIRED": [
+      "business_ref",
+      "expires_at"
+    ],
+    "RESOURCE_RESERVED": [
+      "business_ref",
+      "resource_ref",
+      "capacity",
+      "atoms"
+    ],
+    "RESOURCE_RELEASED": [
+      "business_ref",
+      "atoms"
+    ],
+    "DISPATCH_CONFIRMED": [
+      "business_ref",
+      "option",
+      "atoms"
+    ],
+    "JOURNEY_REPLANNED": [
+      "business_ref",
+      "affected_segments",
+      "reason"
+    ],
+    "JOURNEY_UPGRADED": [
+      "business_ref",
+      "option",
+      "atoms"
+    ],
+    "JOURNEY_STRANDED": [
+      "business_ref",
+      "reason"
+    ],
+    "TRANSFER_COMPLETED": [
+      "business_ref",
+      "option"
+    ],
+    "COMMITMENT_CLOSED": [
+      "business_ref",
+      "outcome"
+    ],
+    "DISRUPTION_DECLARED": [
+      "reason"
+    ],
+    "DISRUPTION_CLEARED": [
+      "reason"
+    ]
+  },
+  "additionalProperties": false
+}

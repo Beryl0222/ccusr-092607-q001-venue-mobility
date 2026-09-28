@@ -1,0 +1,40 @@
+[
+  {"command": "submit", "params": {"business_ref": "B1", "notification_key": "N-B1-001", "person_id": "P1", "person_name": "运动员甲", "role": "athlete", "residence_id": "R1", "venue_id": "V1", "session_id": "S1", "party_size": 1}},
+  {"command": "submit", "params": {"business_ref": "B1", "notification_key": "N-B1-001", "person_id": "P1", "person_name": "运动员甲", "role": "athlete", "residence_id": "R1", "venue_id": "V1", "session_id": "S1", "party_size": 1}},
+  {"command": "submit", "params": {"business_ref": "B1", "notification_key": "N-B1-002", "person_id": "P1X", "person_name": "报名冲突者", "role": "athlete", "residence_id": "R1", "venue_id": "V1", "session_id": "S1", "party_size": 1}},
+  {"command": "resolve_review", "params": {"business_ref": "B1", "accept": true}},
+
+  {"command": "submit", "params": {"business_ref": "B4", "person_id": "P4", "person_name": "工作人员组", "role": "staff", "residence_id": "R1", "venue_id": "V1", "session_id": "S1", "party_size": 4}},
+  {"command": "confirm", "params": {"business_ref": "B4"}},
+  {"command": "confirm", "params": {"business_ref": "B1"}},
+
+  {"command": "submit", "params": {"business_ref": "B3", "person_id": "P3", "person_name": "医疗随护运动员", "role": "athlete", "residence_id": "R1", "venue_id": "V1", "session_id": "S1", "party_size": 1, "medical": true}},
+  {"command": "confirm", "params": {"business_ref": "B3"}},
+
+  {"command": "submit", "params": {"business_ref": "B6", "person_id": "P6", "person_name": "运动员组四人", "role": "athlete", "residence_id": "R1", "venue_id": "V1", "session_id": "S1", "party_size": 4}},
+  {"command": "confirm", "params": {"business_ref": "B6"}},
+
+  {"command": "complete", "params": {"business_ref": "B1"}},
+
+  {"command": "submit", "params": {"business_ref": "B7", "person_id": "P7", "person_name": "媒体乙", "role": "media", "residence_id": "R2", "venue_id": "V2", "session_id": "S2", "party_size": 1}},
+  {"command": "confirm", "params": {"business_ref": "B7"}},
+  {"command": "suspend_transit", "params": {"transit_id": "T2", "reason": "班次停运"}},
+  {"command": "advance", "params": {"minutes": 20}},
+  {"command": "complete", "params": {"business_ref": "B7"}},
+
+  {"command": "submit", "params": {"business_ref": "B8", "person_id": "P8", "person_name": "带器材运动员", "role": "athlete", "residence_id": "R2", "venue_id": "V2", "session_id": "S2", "party_size": 1, "equipment_units": 1}},
+  {"command": "confirm", "params": {"business_ref": "B8"}},
+  {"command": "impose_closure", "params": {"reason": "赛道临时管制", "closure": {"closure_id": "C1", "residence_id": "R2", "venue_id": "V2", "starts_at": "2026-09-26T08:15:00+08:00", "ends_at": "2026-09-26T08:35:00+08:00"}}},
+  {"command": "lift_closure", "params": {"closure_id": "C1", "reason": "管制解除，回到更早的安检窗口"}},
+
+  {"command": "submit", "params": {"business_ref": "B9", "person_id": "P9", "person_name": "工作人员丙", "role": "staff", "residence_id": "R1", "venue_id": "V1", "session_id": "S1", "party_size": 1}},
+  {"command": "confirm", "params": {"business_ref": "B9"}},
+  {"command": "begin_waiting", "params": {"business_ref": "B9", "minutes": 15}},
+  {"command": "advance", "params": {"minutes": 16}},
+
+  {"command": "explain", "params": {"ref": "B8"}},
+  {"command": "ledger", "params": {}},
+  {"command": "changes", "params": {}},
+  {"command": "pending", "params": {}},
+  {"command": "snapshot", "params": {}}
+]

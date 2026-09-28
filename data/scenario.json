@@ -1,0 +1,55 @@
+{
+  "sessions": [
+    {
+      "venue_id": "V1",
+      "session_id": "S1",
+      "start_at": "2026-09-26T10:00:00+08:00",
+      "latest_arrival_at": "2026-09-26T09:00:00+08:00",
+      "security_zone": "Z-A"
+    },
+    {
+      "venue_id": "V2",
+      "session_id": "S2",
+      "start_at": "2026-09-26T11:00:00+08:00",
+      "latest_arrival_at": "2026-09-26T10:00:00+08:00",
+      "security_zone": "Z-B"
+    }
+  ],
+  "residences": [
+    {"residence_id": "R1", "venue_id": "V1", "transit_minutes": 40, "vehicle_minutes": 25},
+    {"residence_id": "R2", "venue_id": "V2", "transit_minutes": 35, "vehicle_minutes": 20}
+  ],
+  "transit": [
+    {
+      "transit_id": "T1",
+      "residence_id": "R1",
+      "venue_id": "V1",
+      "departs_at": "2026-09-26T07:30:00+08:00",
+      "arrives_at": "2026-09-26T08:10:00+08:00",
+      "seats": 3
+    },
+    {
+      "transit_id": "T2",
+      "residence_id": "R2",
+      "venue_id": "V2",
+      "departs_at": "2026-09-26T08:00:00+08:00",
+      "arrives_at": "2026-09-26T08:35:00+08:00",
+      "seats": 6
+    }
+  ],
+  "security_slots": [
+    {"slot_id": "K1", "venue_id": "V1", "security_zone": "Z-A", "starts_at": "2026-09-26T08:15:00+08:00", "ends_at": "2026-09-26T08:35:00+08:00", "capacity": 10},
+    {"slot_id": "K2", "venue_id": "V1", "security_zone": "Z-A", "starts_at": "2026-09-26T08:40:00+08:00", "ends_at": "2026-09-26T09:00:00+08:00", "capacity": 10},
+    {"slot_id": "K3", "venue_id": "V2", "security_zone": "Z-B", "starts_at": "2026-09-26T08:40:00+08:00", "ends_at": "2026-09-26T09:00:00+08:00", "capacity": 10},
+    {"slot_id": "K4", "venue_id": "V2", "security_zone": "Z-B", "starts_at": "2026-09-26T09:10:00+08:00", "ends_at": "2026-09-26T09:30:00+08:00", "capacity": 10}
+  ],
+  "vehicles": [
+    {"vehicle_id": "CAR-A", "seats": 4, "accessible": true, "medical_graded": true, "equipment_capacity": 2, "credential_zones": ["Z-A"], "based_at_residence": "R1"},
+    {"vehicle_id": "CAR-B", "seats": 4, "accessible": false, "medical_graded": false, "equipment_capacity": 1, "credential_zones": ["Z-A"], "based_at_residence": "R1"},
+    {"vehicle_id": "CAR-F", "seats": 4, "accessible": false, "medical_graded": false, "equipment_capacity": 0, "credential_zones": ["Z-A"], "based_at_residence": "R1"},
+    {"vehicle_id": "CAR-D", "seats": 4, "accessible": false, "medical_graded": false, "equipment_capacity": 0, "credential_zones": ["Z-OTHER"], "based_at_residence": "R1"},
+    {"vehicle_id": "CAR-C", "seats": 6, "accessible": true, "medical_graded": true, "equipment_capacity": 3, "credential_zones": ["Z-B"], "based_at_residence": "R2"},
+    {"vehicle_id": "CAR-E", "seats": 4, "accessible": false, "medical_graded": false, "equipment_capacity": 0, "credential_zones": ["Z-B"], "based_at_residence": "R2"}
+  ],
+  "closures": []
+}
